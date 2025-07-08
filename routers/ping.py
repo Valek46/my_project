@@ -1,9 +1,8 @@
-from fastapi import APIRouter, Depends
-from dependencies.db import get_db
+# ping.py (оставить только это, если используется)
+from fastapi import APIRouter, Request
 
 router = APIRouter()
 
 @router.get("/ping")
-async def ping(db = Depends(get_db)):
-    status = "подключено" if db.connected else "не подключено"
-    return {"db_status": status}
+async def ping(request: Request):
+    return {"message": "pong!"}
